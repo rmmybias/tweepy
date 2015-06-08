@@ -11,8 +11,15 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.ayibonte.twitter.R;
+import com.ayibonte.twitter.activities.MainMenuActivity;
+
+import java.util.List;
+
+import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
+import it.neokree.materialnavigationdrawer.elements.MaterialSection;
 
 public class FragmentMain extends Fragment {
     public static final int TIMELINE=0;
@@ -63,11 +70,15 @@ public class FragmentMain extends Fragment {
                 mSearchCheck = true;
 
                 break;
+
         }
         return true;
 
 
     }
+
+
+//    }
 
 
 }

@@ -3,31 +3,16 @@ package com.ayibonte.twitter.activities;
 import android.content.Context;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.Volley;
 import com.ayibonte.twitter.R;
 import com.ayibonte.twitter.controllers.OTweetApplication;
 import com.ayibonte.twitter.fragments.HomeTimelineFragment;
 import com.ayibonte.twitter.fragments.PostTweetFragment;
 import com.ayibonte.twitter.utils.ConnectionDetector;
-import com.ayibonte.twitter.utils.SharedPreferenceUtils;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.RequestCreator;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;

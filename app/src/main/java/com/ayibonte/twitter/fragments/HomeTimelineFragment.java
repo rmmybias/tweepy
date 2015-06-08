@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ayibonte.twitter.R;
 import com.ayibonte.twitter.activities.MainMenuActivity;
+import com.ayibonte.twitter.activities.PostTweetActivity;
 import com.ayibonte.twitter.activities.StatusDetailActivity;
 import com.ayibonte.twitter.adapters.StatusListAdapter;
 import com.ayibonte.twitter.controllers.OTweetApplication;
@@ -155,27 +156,14 @@ public class HomeTimelineFragment extends FragmentMain implements LoadMoreAsyncT
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Don't click again", Toast.LENGTH_LONG).show();
-//                SharedPreferenceUtils.writeFragmentNumberToReturnToAfterThisSession(
-//                        getActivity(),FragmentMain.POST);
 
-//                getActivity().getSupportFragmentManager().beginTransaction()
-//                        .remove(HomeTimelineFragment.this).commit();
-//                getActivity().getSupportFragmentManager().popBackStack();
-                HomeTimelineFragment.this.onDetach();
+                Intent intent = new Intent(getActivity(), PostTweetActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
 
-
-
-//
-//                ((MainMenuActivity)getActivity()).setDefaultSectionLoaded(FragmentMain.POST);
-//                ((MainMenuActivity)getActivity()).setFragment(new PostTweetFragment(), "Post Tweet");
-
-             // getActivity().getSupportFragmentManager().beginTransaction();
-//
 
             }
         });
-//        fab.attachToListView(this.getClass());
 
 
 

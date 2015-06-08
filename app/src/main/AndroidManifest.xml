@@ -37,6 +37,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ayibonte.twitter.activities.MainMenuActivity" />
             </activity>
+        <activity android:name=".activities.PostTweetActivity"
+            android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:parentActivityName=".activities.MainMenuActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ayibonte.twitter.activities.MainMenuActivity" />
+        </activity>
         <activity
             android:name=".activities.SplashActivity"
             android:label="@string/app_name" >

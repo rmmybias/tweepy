@@ -23,7 +23,8 @@ import twitter4j.Status;
 /**
  * Fragment that appears in the "content_frame", shows a planet
  */
-public class PostTweetFragment extends FragmentMain implements View.OnClickListener, PostTweetAsyncTask.PostTweetResponder{
+public class PostTweetFragment extends FragmentMain implements
+        View.OnClickListener, PostTweetAsyncTask.PostTweetResponder{
 
     private OTweetApplication app;
     private TextView counterText;

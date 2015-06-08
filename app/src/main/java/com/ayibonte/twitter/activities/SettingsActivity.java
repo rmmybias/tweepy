@@ -37,7 +37,11 @@ public class SettingsActivity extends ActionBarActivity {
   
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    return MenuHelper.openActivityFromMenuItem(this, item);
+      switch (item.getItemId()){
+          case R.id.menu_item_post:
+              break;
+      }
+    return true;
   }
   
   public void saveButtonClicked(View view) {
@@ -53,7 +57,7 @@ public class SettingsActivity extends ActionBarActivity {
     String username = usernameText.getText().toString();
     String password = passwordText.getText().toString();
 //    app.saveTwitPicCredentials(username, password);
-    Toast.makeText(this, R.string.settings_saved, Toast.LENGTH_LONG).show();
+//    Toast.makeText(this, R.string.settings_saved, Toast.LENGTH_LONG).show();
     finish();
   }
 

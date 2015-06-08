@@ -68,7 +68,7 @@ public class StatusDetailActivity extends ActionBarActivity {
   
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    return MenuHelper.openActivityFromMenuItem(this, item);
+    return true;
   }
   
   private void setUpViews() {

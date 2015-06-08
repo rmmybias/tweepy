@@ -10,8 +10,10 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
+
 /**
- * Created by alfred on 7/28/14.
+ *
+ * Created by alfred on 6/3/15.
  */
 public class GPSLocationData extends Service implements LocationListener {
     public GPSLocationData(Context mContext){
