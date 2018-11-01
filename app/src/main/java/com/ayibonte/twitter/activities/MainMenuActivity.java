@@ -25,8 +25,7 @@ import twitter4j.TwitterException;
 import twitter4j.User;
 
 /**
- *
- *This shows the drawer with all the main_menu on it.
+ * This shows the drawer with all the main_menu on it.
  */
 public class MainMenuActivity extends MaterialNavigationDrawer implements MaterialAccountListener {
     public final static String CURRENT_FRAGMENT = "CURRENT_FRAGMENT";
@@ -34,9 +33,6 @@ public class MainMenuActivity extends MaterialNavigationDrawer implements Materi
     private final static String TAG = MainMenuActivity.class.getSimpleName();
     Context context;
     OTweetApplication app ;
-
-
-
 
     public void setPhoto(Twitter twitter){
         try {
@@ -49,21 +45,16 @@ public class MainMenuActivity extends MaterialNavigationDrawer implements Materi
                 URL url = new URL(user.getProfileImageURL());
                 try {
                     setFirstAccountPhoto(Drawable.createFromStream(
-                            url.openStream(), url.toString()));
+                        url.openStream(), url.toString()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-
-
-
-
         } catch (TwitterException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -71,52 +62,39 @@ public class MainMenuActivity extends MaterialNavigationDrawer implements Materi
         app = (OTweetApplication)getApplication();
         Twitter twitter = app.getTwitter();
 
-//        userPhoto
+        // userPhoto
         if(new ConnectionDetector(this).isConnectingToInternet()){
             setPhoto(twitter);
         }
 
-        //Creation of the list items is here
+        // Creation of the list items is here
         setDrawerHeaderImage(R.drawable.ic_user_background);
 
 
         // set listener
         this.setAccountListener(this);
-        this.setDefaultSectionLoaded(
-                0);
+        this.setDefaultSectionLoaded(0);
 
         // create sections
         this.addSection(newSection(getResources().getString(R.string.home_timeline),R.drawable.home, new HomeTimelineFragment()));
         this.addSection(newSection(getResources().getString(R.string.post),R.drawable.dialog, new PostTweetFragment()));
         // create bottom section
         this.addBottomSection(
-                newSection(getResources().getString(R.string.settings),
-                        R.drawable.ic_settings_black_24dp,
-                new Intent(this,SettingsActivity.class) )
+            newSection(getResources().getString(R.string.settings),
+                R.drawable.ic_settings_black_24dp,
+            new Intent(this,SettingsActivity.class) )
         );
 
         fragmentManager = getSupportFragmentManager();
         context = getApplicationContext();
-
-
-
-
-
-
     }
 
-
-
-//        @Override
-//        protected void onResume() {
-//            super.onResume();
-//            Toast.makeText(this, "onResume", Toast.LENGTH_LONG).show();
-//            setDefaultSectionLoaded(SharedPreferenceUtils.getCurrentFragmentPosition(this));
-//        }
-
-
-
-
+    // @Override
+    // protected void onResume() {
+    //    super.onResume();
+    //    Toast.makeText(this, "onResume", Toast.LENGTH_LONG).show();
+    //    setDefaultSectionLoaded(SharedPreferenceUtils.getCurrentFragmentPosition(this));
+    // }
 
     @Override
     public void onAccountOpening(MaterialAccount materialAccount) {
@@ -127,9 +105,4 @@ public class MainMenuActivity extends MaterialNavigationDrawer implements Materi
     public void onChangeAccount(MaterialAccount materialAccount) {
 
     }
-
-
-
-
-
 }
