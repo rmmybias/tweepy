@@ -21,14 +21,10 @@ import twitter4j.Status;
 
 
 /**
- *
- *
  * Created by alfred on 6/3/15.
  */
 public class PostTweetActivity extends ActionBarActivity
-        implements View.OnClickListener, PostTweetAsyncTask.PostTweetResponder {
-
-
+    implements View.OnClickListener, PostTweetAsyncTask.PostTweetResponder {
 
     private OTweetApplication app;
     private TextView counterText;
@@ -44,7 +40,6 @@ public class PostTweetActivity extends ActionBarActivity
         initializeUIStuff();
 
     }
-
 
     public void initializeUIStuff(){
         counterText = (TextView)findViewById(R.id.counter_text);
@@ -63,8 +58,6 @@ public class PostTweetActivity extends ActionBarActivity
 
     }
 
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -72,10 +65,7 @@ public class PostTweetActivity extends ActionBarActivity
                 postButtonClicked();
                 break;
         }
-
-
     }
-
 
     public void tweetPosted(Status tweet) {
         progressDialog.dismiss();
@@ -98,14 +88,13 @@ public class PostTweetActivity extends ActionBarActivity
     private void postValidTweetOrWarn() {
         String postText = tweetContent.getText().toString();
         int postLength = postText.length();
-        //TODO: remove validation and add TextUtil
+        // TODO: remove validation and add TextUtil
 
         if (140 < postLength) {
             showMaterialDialog(R.string.too_many_characters, R.string.too_many_characters_description);
         } else if (0 == postLength) {
             showMaterialDialog(R.string.tweet_is_blank,R.string.blank_tweet_description );
         } else {
-
             new PostTweetAsyncTask(this, app.getTwitter()).execute(postText);
         }
     }
@@ -115,25 +104,22 @@ public class PostTweetActivity extends ActionBarActivity
         postValidTweetOrWarn();
     }
 
-
-
     /**
-     *
      * @param title title
      * @param msg message
      */
-    public void showMaterialDialog(int title, int  msg){
+    public void showMaterialDialog(int title, int msg){
         new MaterialDialog.Builder(this)
-                .title(getResources().getString(title))
-                .content( getResources().getString(msg))
-                .callback(new MaterialDialog.ButtonCallback() {
-                    @Override
-                    public void onPositive(MaterialDialog dialog) {
-                        super.onPositive(dialog);
-                        dialog.dismiss();
+            .title(getResources().getString(title))
+            .content( getResources().getString(msg))
+            .callback(new MaterialDialog.ButtonCallback() {
+                @Override
+                public void onPositive(MaterialDialog dialog) {
+                    super.onPositive(dialog);
+                    dialog.dismiss();
 
-                    }
-                })
-                .show();
+                }
+            })
+            .show();
     }
 }

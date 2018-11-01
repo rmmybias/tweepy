@@ -21,9 +21,7 @@ public class SplashActivity extends Activity {
         renderFullScreen();
         setContentView(R.layout.activity_splash);
         app = (OTweetApplication)getApplication();
-
     }
-
 
     @Override
     protected void onResume() {
@@ -36,20 +34,13 @@ public class SplashActivity extends Activity {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }finally {
-
-
+                } finally {
                     if (!app.isAuthorized()) {
                         beginAuthorizationActivity();
-                    } else
-                    {
+                    } else {
                         loadMainMenuActivity();
                     }
-
-
-
                 }
-
             }
         };
         thread.start();
@@ -61,24 +52,22 @@ public class SplashActivity extends Activity {
     public void beginAuthorizationActivity(){
         if(new ConnectionDetector(this).isConnectingToInternet()){
             loadActivity(TwitterOAuthActivity.class);
-        }
-        else{
+        } else {
             showMessage();
         }
-
     }
 
     public void showMessage(){
         new MaterialDialog.Builder(this)
-                .title("unable to connect")
-                .content("Please check you internet connection.")
-                .callback(new MaterialDialog.ButtonCallback() {
-                    @Override
-                    public void onPositive(MaterialDialog dialog) {
-                        super.onPositive(dialog);
-                        dialog.dismiss();
-                    }
-                });
+            .title("unable to connect")
+            .content("Please check you internet connection.")
+            .callback(new MaterialDialog.ButtonCallback() {
+                @Override
+                public void onPositive(MaterialDialog dialog) {
+                    super.onPositive(dialog);
+                    dialog.dismiss();
+                }
+            });
     }
 
     public void loadActivity(Class Class)
@@ -86,7 +75,6 @@ public class SplashActivity extends Activity {
         Intent intent = new Intent(SplashActivity.this, Class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-
     }
 
     @Override
@@ -95,21 +83,14 @@ public class SplashActivity extends Activity {
         finish();
     }
 
-
-
-
     /**
-     * makes window fullscreen.
+     * Makes window fullscreen.
      */
     public void renderFullScreen(){
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        );
     }
-
-
 }
-
-
-
