@@ -23,11 +23,9 @@ public class TwitterOAuthActivity extends Activity implements TwitterOAuthView.L
     private static final String CALLBACK_URL = "http://gretest.herokuapp.com/words";
     private static final boolean DUMMY_CALLBACK_URL = true;
 
-
     private TwitterOAuthView view;
     private boolean oauthStarted;
     OTweetApplication app;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -36,7 +34,6 @@ public class TwitterOAuthActivity extends Activity implements TwitterOAuthView.L
         helper = new OAuthHelper(this);
 
         app = (OTweetApplication)getApplication();
-
 
         // Create an instance of TwitterOAuthView.
         view = new TwitterOAuthView(this);
@@ -47,7 +44,6 @@ public class TwitterOAuthActivity extends Activity implements TwitterOAuthView.L
         oauthStarted = false;
     }
 
-
     @Override
     protected void onResume()
     {
@@ -55,7 +51,7 @@ public class TwitterOAuthActivity extends Activity implements TwitterOAuthView.L
 
         if (oauthStarted)
         {
-//            Log.e("Auth", "auth started");
+            // Log.e("Auth", "auth started");
             return;
         }
 
@@ -76,32 +72,29 @@ public class TwitterOAuthActivity extends Activity implements TwitterOAuthView.L
         app.setAccessToken(accessToken);
 
         SharedPreferenceUtils.storeAccessToken(this, accessToken);
-//
+
         startActivity(new Intent(this, MainMenuActivity.class));
         finish();
     }
-
 
     public void onFailure(TwitterOAuthView view, TwitterOAuthView.Result result)
     {
         // Failed to get an access token.
         showMessage("Failed due to " + result);
-
     }
-
 
     private void showMessage(String message)
     {
         // Show a popup message.
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         new MaterialDialog.Builder(this).title(message)
-                .callback(new MaterialDialog.ButtonCallback() {
-                    @Override
-                    public void onPositive(MaterialDialog dialog) {
-                        super.onPositive(dialog);
-                        dialog.dismiss();
-                    }
-                });
+            .callback(new MaterialDialog.ButtonCallback() {
+                @Override
+                public void onPositive(MaterialDialog dialog) {
+                    super.onPositive(dialog);
+                    dialog.dismiss();
+                }
+            });
         finish();
     }
 }
